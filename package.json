@@ -1,0 +1,19 @@
+{
+  "name": "clientserv_launchxapp",
+  "version": "1.0.0",
+  "description": "Cliente servidor app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eddyam/ClientServ_LaunchXApp.git"
+  },
+  "author": "Edder Yamir",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eddyam/ClientServ_LaunchXApp/issues"
+  },
+  "homepage": "https://github.com/Eddyam/ClientServ_LaunchXApp#readme"
+}
