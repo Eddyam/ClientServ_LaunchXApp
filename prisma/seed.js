@@ -71,9 +71,32 @@ const prisma = new PrismaClient();
                 username: 'EddYam',
                 mission: 'Node'
       },
-  });
+    });
+
+    const course1 = await prisma.course.upsert({
+      where: { name: 'Node' },
+      update: {},
+      create: {
+        name: 'Node',
+                lang: 'Español',
+                missionCommander: 'Carlo',
+                enrrollments: 40
+      },
+    });
+
+    const course2 = await prisma.course.upsert({
+      where: { name: 'Java' },
+      update: {},
+      create: {
+        name: 'Java',
+                lang: 'Español',
+                missionCommander: 'Fernanada',
+                enrrollments: 40
+      },
+    });
 
     console.log('Create 5 explorers');
+    console.log('Create 2 courses');
   } catch(e) {
     console.error(e);
     process.exit(1);
