@@ -54,6 +54,54 @@ app.delete('/explorers/:id', async (req, res) => {
 	return res.json({message: "Eliminado correctamente"});
 });
 
+app.get('/courses', async (req, res) => {
+  const allCourses =  await prisma.course.findMany({});
+  res.json(allCourses);
+});
+
+app.get('/courses/:id', async (req, res) => {
+  const id = req.params.id;
+  const course = await prisma.course.findUnique({where: {id: parseInt(id)}});
+  res.json(course);
+});
+
+app.post('/courses', async (req, res) => {
+  const course = {
+    name: req.body.name,
+    lang: req.body.lang,
+    missionCommander: req.body.missionCommander,
+    enrrollments: req.body.enrrollments,
+   };
+
+  const message = 'Course creado.';
+  await prisma.course.create({data: course});
+  return res.json({message});
+});
+
+app.put('/courses/:id', async (req, res) => {
+	const id = parseInt(req.params.id);
+
+	await prisma.course.update({
+		where: {
+			id: id
+		},
+		data: {
+      name: req.body.name,
+      lang: req.body.lang,
+      missionCommander: req.body.missionCommander,
+      enrrollments: req.body.enrrollments,
+		}
+	})
+
+	return res.json({message: "Actualizado correctamente"});
+});
+
+app.delete('/courses/:id', async (req, res) => {
+	const id = parseInt(req.params.id);
+	await prisma.course.delete({where: {id: id}});
+	return res.json({message: "Eliminado correctamente"});
+});
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
